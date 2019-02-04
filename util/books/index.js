@@ -8,7 +8,6 @@ const getRatingFromBookId = (id) => {
   const externalUrl = `https://5gj1qvkc5h.execute-api.us-east-1.amazonaws.com/dev/findBookById/${id}`;
   return httpGet(externalUrl).then(apiResult => apiResult.data);
 };
-// console.log('test');
 const getBooksWithRating = () => getBooksWithoutRating().then((allBooks) => {
   const allBooksCopy = allBooks.books;
   const allIds = allBooksCopy.map(book => book.id);
@@ -20,7 +19,6 @@ const getBooksWithRating = () => getBooksWithoutRating().then((allBooks) => {
 });
 const getBooksWithRatingByAuthor = () => getBooksWithRating()
   .then(allBooksWithRating => allBooksWithRating.reduce((acc, val) => {
-    console.log(acc);
     if (acc[val.Author] === undefined) {
       acc[val.Author] = [val];
     } else {
